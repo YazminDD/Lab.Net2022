@@ -44,8 +44,6 @@ namespace poo_tp1
 
 
 
-
-
             Console.ReadLine();
         }
     }
