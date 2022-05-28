@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{2BEE4EF6-8CEB-4C32-A88F-1674EE2F66C5}</ProjectGuid>
+    <ProjectGuid>{7D60EA67-F7A5-4B39-A34D-168F1F36D28F}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>poo_tp1</RootNamespace>
-    <AssemblyName>poo-tp1</AssemblyName>
+    <RootNamespace>test_1</RootNamespace>
+    <AssemblyName>test 1</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -43,11 +43,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Omnibus.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Taxi.cs" />
-    <Compile Include="transportePublico.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

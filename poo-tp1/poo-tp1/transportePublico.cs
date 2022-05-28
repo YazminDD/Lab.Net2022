@@ -6,15 +6,41 @@ using System.Threading.Tasks;
 
 namespace poo_tp1
 {
-    public class transportePublico
+    public abstract class transportePublico
     {
         private int pasajeros;
+        private string nombre;
+        public int Pasajeros {
+        get { return pasajeros; }
+            set { pasajeros = value; }
+        }
 
-        public void Avanzar()
+        public string Nombre
+        {
+            get { return nombre; }
+            set { nombre = value; }
+        }
+
+
+        public transportePublico(int cantPasajeros)
+        {
+            this.pasajeros = cantPasajeros;
+        }
+
+        public transportePublico(string nombre, int cantPasajeros)
+        {
+            this.pasajeros = cantPasajeros;
+            this.nombre = nombre;
+        }
+
+        public transportePublico()
         {
         }
-        public void Detenerse()
-        {
-        }
+
+        public abstract void Avanzar();
+
+
+        public abstract void Detenerse();
+        
      }
 }
