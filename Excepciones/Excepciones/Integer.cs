@@ -6,14 +6,13 @@ using System.Threading.Tasks;
 
 namespace Excepciones
 {
-    public class Integer
+    public static class Integer
     {
-        public int Dividir(int num1, int num2)
+       public static int Dividir(int num1, int num2)
         {
-           var division = num1 / num2;
-           return division;
-
+            int resultadoDivision = num1 / num2;
+            return resultadoDivision;
         }
-        
+
     }
 }

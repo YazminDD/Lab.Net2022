@@ -10,19 +10,26 @@ namespace Excepciones
     {
         static void Main(string[] args)
         {
-            // Ejercicio 1
+            int num1, num2, resultadoDivision;
 
-            Console.WriteLine("Ejercicio 1 División");
-            Console.WriteLine(" ");
+            
+            // Ejercicio 1        
 
             try
             {
-
-                Console.WriteLine("El resultado es ");
+                Console.WriteLine("Ejercicio 1 División");
+                Console.WriteLine(" ");
+                Console.WriteLine("Ingrese el primer número");
+                num1 = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("Ingrese el segundo número");
+                num2 = Convert.ToInt32(Console.ReadLine());
+                resultadoDivision = Integer.Dividir(num1, num2);
+                Console.WriteLine("El resultado es : " + resultadoDivision);
             }
             catch (DivideByZeroException ms)
             {
                 Console.WriteLine(ms.Message);
+
             }
             finally
             {
