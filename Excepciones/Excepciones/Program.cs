@@ -23,7 +23,7 @@ namespace Excepciones
                 num1 = Convert.ToInt32(Console.ReadLine());
                 Console.WriteLine("Ingrese el segundo número");
                 num2 = Convert.ToInt32(Console.ReadLine());
-                resultadoDivision = Integer.Dividir(num1, num2);
+                resultadoDivision = Operacion.Dividir(num1, num2);
                 Console.WriteLine("El resultado es : " + resultadoDivision);
             }
             catch (DivideByZeroException ms)
