@@ -79,6 +79,41 @@ namespace Excepciones
 
             // Ejercicio 3
 
+            try
+            {
+                Console.WriteLine("------------------------------------------- ");
+                Console.WriteLine(" ");
+                Console.WriteLine("Ejercicio 3 Excepción");
+                Console.WriteLine(" ");
+
+                Logic excepcion = new Logic();
+                excepcion.EnviaExcepcion();
+            }
+
+            catch (InvalidOperationException ms)
+            {
+                Console.WriteLine(ms.Message);
+                Console.ReadKey();
+            }
+
+            // Ejercicio 4
+
+            try
+            {
+                Console.WriteLine("------------------------------------------- ");
+                Console.WriteLine(" ");
+                Console.WriteLine("Ejercicio 4 Excepción Personalizada");
+                Console.WriteLine(" ");
+
+                Logic excepcionPersonalizada = new Logic();
+                excepcionPersonalizada.ExcepcionPersonalizada();
+            }
+
+            catch (ExcepcionPersonalizada ms)
+            {
+                Console.WriteLine(ms.Message);
+                Console.ReadKey();
+            }
         }
     }
 }
