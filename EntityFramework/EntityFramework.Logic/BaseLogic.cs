@@ -1,5 +1,4 @@
 ﻿using EntityFramework.Data;
-using EntityFramework.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,11 +7,12 @@ using System.Threading.Tasks;
 
 namespace EntityFramework.Logic
 {
-    public class CustomersLogic : BaseLogic
+    public class BaseLogic
     {
-       public List<Customers> GetAll()
+        protected readonly NorthwindContext context;
+        public BaseLogic()
         {
-            return context.Customers.ToList();
+            context = new NorthwindContext();
         }
     }
 }
