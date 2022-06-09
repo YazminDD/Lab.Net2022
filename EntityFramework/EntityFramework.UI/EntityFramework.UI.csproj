@@ -60,6 +60,16 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EntityFramework.Entities\EntityFramework.Entities.csproj">
+      <Project>{1B7BA48A-E27E-406D-98CE-047FB686C5FA}</Project>
+      <Name>EntityFramework.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EntityFramework.Logic\EntityFramework.Logic.csproj">
+      <Project>{009A9168-4A18-45D8-8C30-9AC40918C767}</Project>
+      <Name>EntityFramework.Logic</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

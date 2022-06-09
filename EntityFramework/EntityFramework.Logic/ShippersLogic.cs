@@ -14,5 +14,29 @@ namespace EntityFramework.Logic
         {
             return context.Shippers.ToList();
         }
+
+        public void Add(Shippers newShippers)
+        { 
+            context.Shippers.Add(newShippers);
+            context.SaveChanges();
+        }
+
+        public void Delete(int id)
+        {
+            var ShipperAEliminar = context.Shippers.Find(id);
+
+            context.Shippers.Remove(ShipperAEliminar);
+            context.SaveChanges();
+        }
+
+        public void Update(Shippers shippers)
+        {
+            var shipperUpdate = context.Shippers.Find(shippers.ShipperID);
+
+            shipperUpdate.Phone = shipperUpdate.Phone;
+            shipperUpdate.CompanyName = shippers.CompanyName;
+
+            context.SaveChanges();
+        }
     }
 }
