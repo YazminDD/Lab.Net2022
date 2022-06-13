@@ -57,5 +57,15 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EF.LinQ.Entities\EF.LinQ.Entities.csproj">
+      <Project>{5A931479-0769-4A7D-BCA9-E2E27F92F503}</Project>
+      <Name>EF.LinQ.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EF.LinQ.Logic\EF.LinQ.Logic.csproj">
+      <Project>{4A3604FB-EABA-42EB-AEBB-415631B78EE2}</Project>
+      <Name>EF.LinQ.Logic</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -49,7 +49,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseLogic.cs" />
+    <Compile Include="CustomersLogic.cs" />
     <Compile Include="IABMLogic.cs" />
+    <Compile Include="ProductsLogic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -60,6 +62,10 @@
     <ProjectReference Include="..\EF.LinQ.Data\EF.LinQ.Data.csproj">
       <Project>{67D671C1-819C-48A8-B205-84C5CE0C1853}</Project>
       <Name>EF.LinQ.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EF.LinQ.Entities\EF.LinQ.Entities.csproj">
+      <Project>{5A931479-0769-4A7D-BCA9-E2E27F92F503}</Project>
+      <Name>EF.LinQ.Entities</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
