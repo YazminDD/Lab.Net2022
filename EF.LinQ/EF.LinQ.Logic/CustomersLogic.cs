@@ -14,6 +14,17 @@ namespace EF.LinQ.Logic
             return context.Customers.ToList();
         }
 
+        public List<Customers> ClientesCiudadLondres()
+        {
+            // var query = context.Customers.Where(c => c.City == "London");
+
+            var query = from customers in context.Customers
+                        where customers.City == "London"
+                        select customers;
+
+            return query.ToList();
+        }
+
         public List<Customers> ClientesRegionWA()
         {
             var query = context.Customers.Where(c => c.Region == "WA");
@@ -28,21 +39,15 @@ namespace EF.LinQ.Logic
 
             return query.ToList();
         }
-              
-        public void Update(Customers item)
+
+        public List<Tuple<Customers, Orders>> ClientesRegionWAYOrdenesMayoresA1997()
         {
-            throw new NotImplementedException();
-        }
+            var query = from customers in context.Customers
+                        join orders in context.Orders on customers.CustomerID equals orders.CustomerID
+                        where customers.Region == "WA" && orders.OrderDate > new DateTime(1997, 1, 1)
+                        select new {customers, orders };
 
-        public List<Customers> ClientesCiudadLondres()
-        {
-           // var query = context.Customers.Where(c => c.City == "London");
-
-                var query = from customers in context.Customers
-                where customers.City == "London"
-                select customers;
-
-            return query.ToList();
+            return query.AsEnumerable().Select(i => new Tuple<Customers, Orders>(i.customers, i.orders)).ToList();
         }
 
         public void Add(Customers item)
@@ -55,7 +60,10 @@ namespace EF.LinQ.Logic
             throw new NotImplementedException();
         }
 
-
+        public void Update(Customers item)
+        {
+            throw new NotImplementedException();
+        }
 
     }
 }

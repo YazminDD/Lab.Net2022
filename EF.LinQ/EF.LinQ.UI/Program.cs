@@ -64,6 +64,10 @@ namespace EF.LinQ.UI
                             break;
 
                         case 7:
+                            Consulta7();
+                            break;
+
+                        case 8:
                             salir = true;
                             break;
                         default:
@@ -262,7 +266,40 @@ namespace EF.LinQ.UI
 
         }
 
-        
+        // Consulta 7
+        public static void Consulta7()
+        {
+            try
+            {
+                Console.Clear();
+                Console.WriteLine("Consulta 7");
+                Console.WriteLine("Clientes de la Región WA y fecha de orden mayor a 1/1/1997");
+                Console.WriteLine(" ");
+
+                var customerLogic = new CustomersLogic();
+                var customersOrders = customerLogic.ClientesRegionWAYOrdenesMayoresA1997();
+
+                foreach (var x in customersOrders)
+                {
+                    Console.WriteLine($"{x.Item1.CompanyName} - {x.Item2.OrderID} - {x.Item2.OrderDate}");
+                }
+                Console.WriteLine("Presione una tecla para continuar");
+                Console.ReadKey(); ;
+
+            }
+
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine("Presione una tecla para continuar");
+                Console.ReadKey();
+
+            }
+
+
+        }
+
+
     }
                   
         #endregion
