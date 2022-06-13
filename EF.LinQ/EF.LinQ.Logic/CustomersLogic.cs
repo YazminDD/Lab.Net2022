@@ -9,6 +9,42 @@ namespace EF.LinQ.Logic
 {
     public class CustomersLogic : BaseLogic, IABMLogic<Customers>
     {
+        public List<Customers> GetAll()
+        {
+            return context.Customers.ToList();
+        }
+
+        public List<Customers> ClientesRegionWA()
+        {
+            var query = context.Customers.Where(c => c.Region == "WA");
+
+            return query.ToList();
+        }
+
+        public List<string> NombreClientes()
+        {
+            var query = from customers in context.Customers
+                        select customers.CompanyName;
+
+            return query.ToList();
+        }
+              
+        public void Update(Customers item)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Customers> ClientesCiudadLondres()
+        {
+           // var query = context.Customers.Where(c => c.City == "London");
+
+                var query = from customers in context.Customers
+                where customers.City == "London"
+                select customers;
+
+            return query.ToList();
+        }
+
         public void Add(Customers item)
         {
             throw new NotImplementedException();
@@ -19,17 +55,7 @@ namespace EF.LinQ.Logic
             throw new NotImplementedException();
         }
 
-        public List<Customers> GetAll()
-        {
-            return context.Customers.ToList();
-        }
 
-        public void Update(Customers item)
-        {
-            throw new NotImplementedException();
-        }
-
-       
 
     }
 }

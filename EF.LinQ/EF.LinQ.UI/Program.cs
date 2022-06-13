@@ -1,4 +1,5 @@
 ﻿using EF.LinQ.Logic;
+using EF.LinQ.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,11 +24,11 @@ namespace EF.LinQ.UI
                     Console.WriteLine(" ");
                     Console.WriteLine("Menú de opciones");
                     Console.WriteLine(" ");
-                    Console.WriteLine("1. ");
+                    Console.WriteLine("1. Clientes de la ciudad de Londres");
                     Console.WriteLine("2. Productos sin stock");
                     Console.WriteLine("3. Productos que tienen stock y que cuestan más de 3 por unidad");
                     Console.WriteLine("4. Clientes de la región WA");
-                    Console.WriteLine("5. Productos donde el ID  sea igual a 789");
+                    Console.WriteLine("5. Productos donde el ID sea igual a 789");
                     Console.WriteLine("6. Nombres de los clientes en mayúscula y minúscula");
                     Console.WriteLine("7. Clientes de la Región WA y fecha de orden mayor a 1/1/1997");
                     Console.WriteLine("8. Salir");
@@ -39,8 +40,8 @@ namespace EF.LinQ.UI
                     {
 
                         case 1:
-                            Consulta1();
-                            break;
+                        Consulta1();
+                        break;
 
                         case 2:
                             Consulta2();
@@ -51,7 +52,7 @@ namespace EF.LinQ.UI
                             break;
 
                         case 4:
-                            Consulta4);
+                            Consulta4();
                             break;
 
                         case 5:
@@ -63,10 +64,6 @@ namespace EF.LinQ.UI
                             break;
 
                         case 7:
-                            Consulta7();
-                            break;
-
-                        case 8:
                             salir = true;
                             break;
                         default:
@@ -88,15 +85,41 @@ namespace EF.LinQ.UI
 
         #region
 
-           // Consulta 1
+        // Consulta 1
+        public static void Consulta1()
+        {
+            try
+            {
+                Console.Clear();
+                Console.WriteLine("Consulta 1");
+                Console.WriteLine("Clientes de la ciudad de Londres");
+                Console.WriteLine(" ");
 
-           
-           // Consulta 2
+                CustomersLogic customersLogic = new CustomersLogic();
+                var clientes = customersLogic.ClientesCiudadLondres();
 
-           public static void Consulta2()
-           {
-             try
-             {
+                foreach (var c in clientes)
+                {
+                    Console.WriteLine($"Nombre: {c.CompanyName} - Ciudad: {c.City}");
+                }
+
+            }
+            
+
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine("Presione una tecla para continuar");
+                Console.ReadKey();
+            }
+        }
+
+        // Consulta 2
+
+        public static void Consulta2()
+        {
+            try
+            {
                 Console.Clear();
                 Console.WriteLine("Consulta 2");
                 Console.WriteLine("Productos sin stock");
@@ -109,19 +132,141 @@ namespace EF.LinQ.UI
                 {
                     Console.WriteLine($"Nombre: {p.ProductName}");
                 }
-             }
+            }
 
-             catch (Exception e)
-             {
-                Console.WriteLine(e.Message);
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
                 Console.WriteLine("Presione una tecla para continuar");
                 Console.ReadKey();
-             }
-           }
+            }
+        }
 
+        // Consulta 3
+
+        public static void Consulta3()
+        {
+            try
+            {
+                Console.Clear();
+                Console.WriteLine("Consulta 3");
+                Console.WriteLine("Productos que tienen stock y que cuestan más de 3 por unidad");
+                Console.WriteLine(" ");
+
+                ProductsLogic productsLogic = new ProductsLogic();
+                var productos = productsLogic.ProductosEnStockYCuestanMasDe3PorUnidad();
+
+                foreach (var p in productos)
+                {
+                    Console.WriteLine($"Nombre: {p.ProductName}");
+                }
+            }
+
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine("Presione una tecla para continuar");
+                Console.ReadKey();
+            }
+        }
+
+        // Consulta 4
+
+        public static void Consulta4()
+        {
+            try
+            {
+                Console.Clear();
+                Console.WriteLine("Consulta 4");
+                Console.WriteLine("Clientes de la región WA");
+                Console.WriteLine(" ");
+
+                CustomersLogic customersLogic = new CustomersLogic();
+                var clientes = customersLogic.ClientesRegionWA();
+
+                foreach (var c in clientes)
+                {
+                    Console.WriteLine($"Nombre: {c.CompanyName}");
+                }
+            }
+
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine("Presione una tecla para continuar");
+                Console.ReadKey();
+
+            }
+        }
+
+        // Consulta 5
+        public static void Consulta5()
+        {
+            try
+            {
+                Console.Clear();
+                Console.WriteLine("Consulta 5");
+                Console.WriteLine("Productos donde el ID sea igual a 789 o  null");
+                Console.WriteLine(" ");
+
+                ProductsLogic productsLogic = new ProductsLogic();
+                var productos = productsLogic.ProductoID789ONull();
+
+                if (productos != null)
+                {
+                    Console.WriteLine($"{productos.ProductID}  -  {productos.ProductName}");
+                }
+                else
+                {
+                    Console.Write("null");
+                }
+            }
+
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine("Presione una tecla para continuar");
+                Console.ReadKey();
+
+            }
+        }
+
+        // Consulta 6
+        public static void Consulta6()
+        {
+            try
+            {
+                Console.Clear();
+                Console.WriteLine("Consulta 6");
+                Console.WriteLine("Nombres de los clientes en mayúscula y minúscula");
+                Console.WriteLine(" ");
+
+                CustomersLogic customersLogic = new CustomersLogic();
+                var clientes = customersLogic.NombreClientes();
+
+                foreach (var c in clientes)
+                {
+                    Console.WriteLine($"Nombre Mayúscula: {c.ToUpper()} - Nombre minúscula: {c.ToLower()} ");
+                }
+
+            }
+
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine("Presione una tecla para continuar");
+                Console.ReadKey();
+
+            }
+
+
+        }
+
+        
+    }
                   
         #endregion
 
-    }
+    
 }
 
