@@ -13,6 +13,8 @@
             <th scope="col">ShipperID</th>
             <th scope="col">ShipperName</th>
             <th scope="col">ShipperPhone</th>
+            <th scope="col">Editar</th>
+            <th scope="col">Borrar</th>
         </tr>
     </thead>
     <tbody>
@@ -22,6 +24,8 @@
                 <th scope="row">@Shipper.ShipperID</th>
                 <th>@Shipper.ShipperName</th>
                 <th>@Shipper.ShipperPhone</th>
+                <th></th>
+                <th>@Html.ActionLink("Borrar", "Delete", new { id = Shipper.ShipperID })</th>
             </tr>
          }
     </tbody>
@@ -29,5 +33,5 @@
 </table>
 
 <div>
-    @Html.ActionLink("Crear nuevo Shipper", "Create")
+    @Html.ActionLink("Agregar nuevo Shipper", "Create")
 </div>

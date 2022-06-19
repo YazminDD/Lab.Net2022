@@ -90,7 +90,8 @@ namespace EntityFramework.MVC.Controllers
         // GET: Shippers/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            shippersLogic.Delete(id);
+            return RedirectToAction("Index");
         }
 
         // POST: Shippers/Delete/5
