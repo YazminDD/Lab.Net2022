@@ -16,7 +16,6 @@ namespace EntityFramework.MVC.Models
         [StringLength(20)]
         public string ShipperName { get; set; }
 
-        [StringLength(12)]
         public string ShipperPhone { get; set; }
 
     }

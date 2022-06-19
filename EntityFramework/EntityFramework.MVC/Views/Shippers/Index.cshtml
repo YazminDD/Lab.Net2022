@@ -2,7 +2,7 @@
 
 @{
     ViewBag.Title = "Shippers";
-    
+
 }
 
 <h1>Shippers</h1>
@@ -19,12 +19,12 @@
     </thead>
     <tbody>
         @foreach (var Shipper in Model)
-         {
+        {
             <tr>
                 <th scope="row">@Shipper.ShipperID</th>
                 <th>@Shipper.ShipperName</th>
                 <th>@Shipper.ShipperPhone</th>
-                <th></th>
+                <th>@Html.ActionLink("Editar", "Edit", new { id = Shipper.ShipperID })</th>
                 <th>@Html.ActionLink("Borrar", "Delete", new { id = Shipper.ShipperID })</th>
             </tr>
          }

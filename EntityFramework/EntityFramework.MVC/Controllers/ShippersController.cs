@@ -68,22 +68,42 @@ namespace EntityFramework.MVC.Controllers
         // GET: Shippers/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            List<Shippers> shippers = shippersLogic.GetAll();
+            List<ShippersView> shippersView = shippers.Where(s => s.ShipperID == id)
+                                                       .Select(s => new ShippersView
+                                                       {
+                                                           ShipperID = s.ShipperID,
+                                                           ShipperName = s.CompanyName,
+                                                           ShipperPhone = s.Phone
+                                                       }).ToList();
+            ShippersView shipperView = shippersView[0];
+            return View("Edit");
+                                   
         }
 
         // POST: Shippers/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(ShippersView shippers)
         {
             try
             {
-                // TODO: Add update logic here
+                Shippers shipperEntity = new Shippers
+                {
+                    ShipperID = shippers.ShipperID,
+                    CompanyName = shippers.ShipperName,
+                    Phone = shippers.ShipperPhone
+                };
+
+                
+                shippersLogic.Update(shipperEntity);
 
                 return RedirectToAction("Index");
+
+                
             }
-            catch
+            catch (Exception)
             {
-                return View();
+                return RedirectToAction("Index");
             }
         }
 
