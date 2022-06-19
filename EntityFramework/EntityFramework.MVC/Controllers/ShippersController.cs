@@ -94,7 +94,6 @@ namespace EntityFramework.MVC.Controllers
                     Phone = shippers.ShipperPhone
                 };
 
-                
                 shippersLogic.Update(shipperEntity);
 
                 return RedirectToAction("Index");
