@@ -12,8 +12,11 @@ namespace EntityFramework.MVC.Models
         public int ShipperID { get; set; }
 
         [Required]
+
+        [StringLength(20)]
         public string ShipperName { get; set; }
 
+        [StringLength(12)]
         public string ShipperPhone { get; set; }
 
     }

@@ -1,4 +1,5 @@
-﻿using EntityFramework.Logic;
+﻿using EntityFramework.Entities;
+using EntityFramework.Logic;
 using EntityFramework.MVC.Models;
 using System;
 using System.Collections.Generic;
@@ -10,11 +11,18 @@ namespace EntityFramework.MVC.Controllers
 {
     public class ShippersController : Controller
     {
+        ShippersLogic shippersLogic;
+
+        public ShippersController()
+        {
+            shippersLogic = new ShippersLogic();
+        }
+        
+
         // GET: Shippers
         public ActionResult Index()
         {
-            var logic = new ShippersLogic();
-            List<Entities.Shippers> shippers = logic.GetAll();
+            var shippers = shippersLogic.GetAll();         
 
             List<ShippersView> shippersViews = shippers.Select(s => new ShippersView
             {
@@ -40,15 +48,18 @@ namespace EntityFramework.MVC.Controllers
 
         // POST: Shippers/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(ShippersView shippersView)
         {
             try
             {
-                // TODO: Add insert logic here
+
+                Shippers shipperEntity = new Shippers {ShipperID = shippersView.ShipperID, CompanyName= shippersView.ShipperName, Phone= shippersView.ShipperPhone};
+                shippersLogic.Add(shipperEntity);
+
 
                 return RedirectToAction("Index");
             }
-            catch
+            catch (Exception)
             {
                 return View();
             }
