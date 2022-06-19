@@ -1,4 +1,6 @@
-﻿using System;
+﻿using EntityFramework.Logic;
+using EntityFramework.MVC.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,7 +13,17 @@ namespace EntityFramework.MVC.Controllers
         // GET: Shippers
         public ActionResult Index()
         {
-            return View();
+            var logic = new ShippersLogic();
+            List<Entities.Shippers> shippers = logic.GetAll();
+
+            List<ShippersView> shippersViews = shippers.Select(s => new ShippersView
+            {
+                ShipperID = s.ShipperID,
+                ShipperName = s.CompanyName,
+                ShipperPhone = s.Phone,
+            }).ToList();
+
+            return View(shippersViews);
         }
 
         // GET: Shippers/Details/5
