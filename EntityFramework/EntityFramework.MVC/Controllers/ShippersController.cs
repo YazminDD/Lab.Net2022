@@ -61,7 +61,7 @@ namespace EntityFramework.MVC.Controllers
             }
             catch (Exception)
             {
-                return View();
+                return RedirectToAction("Index", "Error");
             }
         }
 
@@ -77,6 +77,7 @@ namespace EntityFramework.MVC.Controllers
                                                            ShipperPhone = s.Phone
                                                        }).ToList();
             ShippersView shipperView = shippersView[0];
+            
             return View("Edit");
                                    
         }
@@ -93,7 +94,7 @@ namespace EntityFramework.MVC.Controllers
                     CompanyName = shippers.ShipperName,
                     Phone = shippers.ShipperPhone
                 };
-
+                
                 shippersLogic.Update(shipperEntity);
 
                 return RedirectToAction("Index");
@@ -102,7 +103,7 @@ namespace EntityFramework.MVC.Controllers
             }
             catch (Exception)
             {
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Error");
             }
         }
 
