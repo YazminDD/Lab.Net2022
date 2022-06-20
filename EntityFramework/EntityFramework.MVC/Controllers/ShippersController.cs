@@ -18,7 +18,6 @@ namespace EntityFramework.MVC.Controllers
             shippersLogic = new ShippersLogic();
         }
         
-
         // GET: Shippers
         public ActionResult Index()
         {
@@ -34,12 +33,6 @@ namespace EntityFramework.MVC.Controllers
             return View(shippersViews);
         }
 
-        // GET: Shippers/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
         // GET: Shippers/Create
         public ActionResult Create()
         {
@@ -53,7 +46,7 @@ namespace EntityFramework.MVC.Controllers
             try
             {
 
-                Shippers shipperEntity = new Shippers {ShipperID = shippersView.ShipperID, CompanyName= shippersView.ShipperName, Phone= shippersView.ShipperPhone};
+                Shippers shipperEntity = new Shippers {CompanyName= shippersView.ShipperName, Phone= shippersView.ShipperPhone};
                 shippersLogic.Add(shipperEntity);
 
 
@@ -61,7 +54,7 @@ namespace EntityFramework.MVC.Controllers
             }
             catch (Exception)
             {
-                return RedirectToAction("Index", "Error");
+                return RedirectToAction("Index");
             }
         }
 
@@ -77,7 +70,6 @@ namespace EntityFramework.MVC.Controllers
                                                            ShipperPhone = s.Phone
                                                        }).ToList();
             ShippersView shipperView = shippersView[0];
-            
             return View("Edit");
                                    
         }
@@ -96,14 +88,13 @@ namespace EntityFramework.MVC.Controllers
                 };
                 
                 shippersLogic.Update(shipperEntity);
-
                 return RedirectToAction("Index");
 
                 
             }
             catch (Exception)
             {
-                return RedirectToAction("Index", "Error");
+                return RedirectToAction("Index");
             }
         }
 
@@ -114,20 +105,6 @@ namespace EntityFramework.MVC.Controllers
             return RedirectToAction("Index");
         }
 
-        // POST: Shippers/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
+        
     }
 }

@@ -33,7 +33,7 @@ namespace EntityFramework.Logic
         {
             var shipperUpdate = context.Shippers.Find(shippers.ShipperID);
 
-            shipperUpdate.Phone = shipperUpdate.Phone;
+            shipperUpdate.Phone = shippers.Phone;
             shipperUpdate.CompanyName = shippers.CompanyName;
 
             context.SaveChanges();
