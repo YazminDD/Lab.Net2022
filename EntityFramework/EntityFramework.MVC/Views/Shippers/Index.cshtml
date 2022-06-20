@@ -22,10 +22,10 @@
         {
             <tr>
                 <th scope="row">@Shipper.ShipperID</th>
-                <th>@Shipper.ShipperName</th>
-                <th>@Shipper.ShipperPhone</th>
-                <th>@Html.ActionLink("Editar", "Edit", new { id = Shipper.ShipperID })</th>
-                <th>@Html.ActionLink("Borrar", "Delete", new { id = Shipper.ShipperID })</th>
+                <td>@Shipper.ShipperName</td>
+                <td>@Shipper.ShipperPhone</td>
+                <td>@Html.ActionLink("Editar", "Edit", new { id = Shipper.ShipperID })</td>
+                <td>@Html.ActionLink("Borrar", "Delete", new { id = Shipper.ShipperID }, new {onclick = "return confirm('¿Esta seguro de borrar?')"})</td>
             </tr>
          }
     </tbody>
